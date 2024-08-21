@@ -15,9 +15,9 @@ class EncoderBlock(nn.Module):
         self.norm2 = LayerNorm(d_model)
         self.dropout2 = nn.Dropout(drop)
 
-    def forward(self, x, src_mask):
+    def forward(self, x):
         _x = x
-        x = self.attention(q=x, k=x, v=x, mask=src_mask)
+        x = self.attention(q=x, k=x, v=x)
 
         x = self.dropout1(x)
         x = self.norm1(x + _x)
