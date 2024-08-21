@@ -45,3 +45,7 @@ class BPETokenizer:
     def inv_tokenize(self, token_ids: list) -> str:
         """Inverse tokenization."""
         return list(self.encoder.inverse_transform([token_ids]))[0]
+
+    def token_to_id(self, token: str) -> int:
+        """Convert a token to its corresponding ID."""
+        return self.encoder.token_to_id(token)

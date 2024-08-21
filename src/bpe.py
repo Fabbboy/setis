@@ -280,6 +280,16 @@ class Encoder:
         with open(outpath, 'w', encoding=encoding) as outfile:
             json.dump(self.vocabs_to_dict(dont_warn), outfile, ensure_ascii=ensure_ascii, indent=indent)
 
+    def token_to_id(self, token):
+        # type: (Encoder, str) -> int
+        """ Convert a token to its corresponding ID """
+        if token in self.word_vocab:
+            return self.word_vocab[token]
+        elif token in self.bpe_vocab:
+            return self.bpe_vocab[token]
+        else:
+            return self.word_vocab.get(self.UNK)
+
     @classmethod
     def from_dict(cls, vocabs):
         # type: (Any, Dict[str, Dict[str, int]]) -> Encoder
