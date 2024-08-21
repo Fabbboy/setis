@@ -1,16 +1,5 @@
 from bpe import Encoder
 
-
-def convert_to_unicode(text: str) -> str:
-    """Converts `text` to Unicode (if it's not already), assuming utf-8 input."""
-    if isinstance(text, str):
-        return text
-    elif isinstance(text, bytes):
-        return text.decode("utf-8", "ignore")
-    else:
-        raise ValueError(f"Unsupported string type: {type(text)}")
-
-
 def whitespace_tokenize(text: str) -> list:
     """Runs basic whitespace cleaning and splitting on a piece of text."""
     return text.strip().split() if text.strip() else []
