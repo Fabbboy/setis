@@ -25,8 +25,8 @@ class Encoder(nn.Module):
             ]
         )
 
-    def forward(self, x, src_mask):
+    def forward(self, x):
         x = self.embedding(x)
         for layer in self.layers:
-            x = layer(x, src_mask)
+            x = layer(x)
         return x
